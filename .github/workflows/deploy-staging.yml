@@ -1,0 +1,13 @@
+# Activity 2: Configure a trigger based on labels. For now, we'll focus on staging. We'll spin up and destroy our environment in a later step.
+
+name: Stage the app
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
